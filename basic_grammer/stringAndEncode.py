@@ -20,7 +20,7 @@ print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'))
 print ('###########')
 #len()获取字符串长度
 print ('###########')
-print('SONY无线耳机字符长度：', len('SONY无线耳机'))
+print('SONY无线耳机字符长度：', len('SONY无线耳机1'))
 print ('###########')
 print ('###########')
 print ('###########')
