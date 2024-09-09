@@ -29,9 +29,10 @@ print(area_func(1, 1))
 print(area_func(0, 3, 2)())
 
 def lazy_sum(*args):
+    ax = 0
     def sum():
-        ax = 0
         for x in args:
+            nonlocal ax
             ax = ax + x
         return ax
     return sum
