@@ -1,7 +1,7 @@
 """
 高级特性
 """
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 import os
 
 print("###### 切片 ######")
@@ -129,3 +129,68 @@ print(L)
 print("###### 生成器 ######")
 # 通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
 # 所以，如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的list，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器：generator。
+
+# 创建一个生成器（列表生成式最外层的“[]”改为“()”）
+L = (x * x for x in list(range(1, 11)))
+print(L)
+for x in L:
+    print(x)
+#斐波拉契数用函数表达
+def fib(max):
+    fib_list = []
+    # 循环次数
+    n = 0
+    # f(n - 2)的值
+    a = 0
+    # f(n - 1)的值
+    b = 1
+    while n < max:
+        fib_list.append(b)
+        a = b
+        # f(n)的值
+        b = a + b
+        n = n + 1
+    return fib_list
+print(fib(5))
+
+#斐波拉契数用生成器表达
+def fib_generator(max):
+    fib_list = []
+    # 循环次数
+    n = 0
+    # f(n - 2)的值
+    a = 0
+    # f(n - 1)的值
+    b = 1
+    while n < max:
+        yield b
+        a = b
+        # f(n)的值
+        b = a + b
+        n = n + 1
+    return fib_list
+fib_g = fib_generator(5)
+for x in fib_g:
+    print(x)
+    
+print("###### 迭代器 ######")
+# isinstance()判断一个对象是否是可迭代对象
+print('是否是可迭代对象（Iterable）')
+print(isinstance([], Iterable))
+print(isinstance({}, Iterable))
+print(isinstance((), Iterable))
+print(isinstance('A', Iterable))
+print(isinstance((x for x in range(10)), Iterable))
+# 可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator，它鱼Iterable存在不同
+print('是否是迭代器对象（Iterator）')
+print(isinstance([], Iterator))
+print(isinstance({}, Iterator))
+print(isinstance((), Iterator))
+print(isinstance('A', Iterator))
+print(isinstance((x for x in range(10)), Iterator))
+# list、tuple、set、字符串都是Iterable对象但不是Iterator对象，通过iter()方法可以把它们转化为Iterator对象
+print('iter()后是否是迭代器对象（Iterator）')
+print(isinstance(iter([]), Iterator))
+print(isinstance(iter({}), Iterator))
+print(isinstance(iter(()), Iterator))
+print(isinstance(iter('A'), Iterator))
