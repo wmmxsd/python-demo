@@ -5,13 +5,15 @@ import types
 class Student(object):
     # 类属性
     school = 'Primary school'
-
+    count = 0
 
     # __init__方法是类创建实例时的初始化方法，其第一个参数永远是self，表示实例本身，创建实例是self参数无须填写，python解释器会自动添加进来
     def __init__(self, name, score):
         self.name = name
         # 字段前面加上__后外部无法访问
         self.__score = score
+        Student.count = Student.count + 1
+        print('Student.count', Student.count)
 
     def get_score(self):
         return self.__score
@@ -23,14 +25,17 @@ class Student(object):
         print(self.name, self.__score)
 
     def print_school(self):
+        # 对象没有school属性，所以会使用类的school属性
         print('self.school', self.school)
         print('Student.school', Student.school)
         self.school = 'High School'
         print('self.school = \'High School\'')
+        # 对象属性的优先级更高
         print('self.school', self.school)
         print('Student.school', Student.school)
         del self.school
         print('del self.school')
+        # 删除对象的school属性后会使用类的school属性
         print('self.school', self.school)
         print('Student.school', Student.school)
 
@@ -96,4 +101,3 @@ class Student(object):
             print(self.__score)
         else:
             print('no set_score')
-
