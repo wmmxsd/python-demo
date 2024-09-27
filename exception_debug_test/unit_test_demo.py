@@ -1,6 +1,6 @@
 import unittest
 
-from basic_grammer.oop.chain import Chain
+from oop.chain import Chain
 
 
 class StudentTest(unittest.TestCase):

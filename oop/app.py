@@ -1,4 +1,4 @@
-from basic_grammer.oop.student import Student
+from oop.student import Student
 
 print('student.py')
 tom = Student('tom', 99)

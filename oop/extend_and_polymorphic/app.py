@@ -1,4 +1,4 @@
-from basic_grammer.oop.extend_and_polymorphic.extend_and_polymorphic import Animal, Dog, Cat, ToyCar
+from oop.extend_and_polymorphic.extend_and_polymorphic import Animal, Dog, Cat, ToyCar
 
 print('\nextend_and_polymorphic.py')
 
