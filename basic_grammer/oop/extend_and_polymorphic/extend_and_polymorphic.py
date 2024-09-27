@@ -2,10 +2,23 @@
 继承和多态
 """
 class Animal(object):
+    def __init__(self, name):
+        self.name = name
+
     def run(self):
         print('Animal is running...')
 
-class Dog(Animal):
+class Eat(object):
+    def eat(self):
+        pass
+
+# 多重继承
+class Dog(Animal, Eat):
+    def __init__(self, name, age):
+        super(Dog, self).__init__(name)
+        super.__init__(self, name)
+        self.age = age
+
     def run(self):
         print('Dog is running...')
 

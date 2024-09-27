@@ -24,6 +24,9 @@ class Student(object):
     def print_score(self):
         print(self.name, self.__score)
 
+    def __str__(self):
+        return f'Student ({self.name})'
+
     def print_school(self):
         # 对象没有school属性，所以会使用类的school属性
         print('self.school', self.school)
@@ -56,6 +59,18 @@ class Student(object):
         print('type(Student.print_type) == types.MethodType ', type(Student.print_info) == types.MethodType)
         print('type(Student(\'1\', 22)) == types.ModuleType ', type(Student('1', 22)) == types.ModuleType)
         print('type(None) == types.NoneType ', type(None) == types.NoneType)
+
+        # type()函数既可以返回一个对象的类型，又可以创建出新的类型
+        # 要创建一个class对象，type()函数依次传入3个参数：
+        # class的名称；
+        # 继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法；
+        # class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。
+        def fn(self, name='world'):  # 先定义函数
+            print('Hello, %s.' % name)
+
+        hello_c = type('Hello', (object, ), dict(hello=fn))
+        hi = hello_c()
+        hi.hello()
 
         print('\n######isinstance()######')
         #能用type()函数可以用instance()函数代替，instance()函数不仅可以判断对象类型，还可以判断class类型
