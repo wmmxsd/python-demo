@@ -36,6 +36,19 @@ class Device(object):
             raise ValueError("score must be between 0 and 100")
         self._score = score
 
+    def to_dict(self):
+        return {
+            'ip': self.ip,
+            'score': self.score
+        }
+
+    @staticmethod
+    def to_device(device_dict):
+        d = Device()
+        d.ip = device_dict['ip']
+        d.score = device_dict['score']
+        return d
+
 device = Device()
 # 使用@property访问或者设置属性时更简洁。
 device.set_ip(chr(50))

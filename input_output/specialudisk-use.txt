@@ -1,0 +1,123 @@
+{
+	"order": 0,
+	"index_patterns": [
+		"specialudisk-use-*"
+	],
+	"settings": {
+		"index": {
+			"refresh_interval": "30s",
+			"number_of_shards": "15",
+			"translog": {
+				"flush_threshold_size": "1GB",
+				"sync_interval": "180s",
+				"durability": "async"
+			},
+			"number_of_replicas": "0",
+			"merge": {
+				"scheduler": {
+					"max_thread_count": "1"
+				},
+				"policy": {
+					"max_merge_at_once_explicit": "40",
+					"max_merge_at_once": "20",
+					"max_merged_segment": "5g",
+					"segments_per_tier": "20",
+					"floor_segment": "5m"
+				}
+			}
+		}
+	},
+	"mappings": {
+		"properties": {
+			"username": {
+				"type": "keyword"
+			},
+			"dev_ip": {
+				"type": "keyword"
+			},
+			"dev_id": {
+				"type": "keyword"
+			},
+			"action_type": {
+				"type": "keyword"
+			},
+			"media_user": {
+				"type": "keyword"
+			},
+			"media_unit": {
+				"type": "keyword"
+			},
+			"op_code": {
+				"type": "keyword"
+			},
+			"u_pid": {
+				"type": "keyword"
+			},
+			"u_level": {
+				"type": "keyword"
+			},
+			"op_description": {
+				"type": "keyword"
+			},
+			"report_log_type": {
+				"type": "keyword"
+			},
+			"guid": {
+				"type": "keyword"
+			},
+			"event_time": {
+				"format": "strict_date_optional_time||epoch_millis",
+				"type": "date"
+			},
+			"std_dev_safety_marign": {
+				"type": "keyword"
+			},
+			"std_dev_type": {
+				"type": "keyword"
+			},
+			"std_dev_type_group": {
+				"type": "keyword"
+			},
+			"std_terminal_type": {
+				"type": "keyword"
+			},
+			"std_user_no": {
+				"type": "keyword"
+			},
+			"std_user_role": {
+				"type": "keyword"
+			},
+			"std_user_type": {
+				"type": "keyword"
+			},
+			"report_dev_ip": {
+				"type": "keyword"
+			},
+			"report_dev_ip_num": {
+				"type": "keyword"
+			},
+			"report_dev_type": {
+				"type": "keyword"
+			},
+			"report_company_name": {
+				"type": "keyword"
+			},
+			"std_org_code": {
+				"type": "keyword"
+			},
+			"std_dyperiph_pid": {
+				"type": "keyword"
+			},
+			"std_dyperiph_vid": {
+				"type": "keyword"
+			},
+			"std_dyperiph_sn": {
+				"type": "keyword"
+			},
+			"u_type": {
+				"type": "keyword"
+			}
+		}
+	},
+	"aliases": {}
+}
